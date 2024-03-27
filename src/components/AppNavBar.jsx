@@ -91,7 +91,7 @@ export default function AppNavBar(props) {
   return (
     <Box>
       <AppBar elevation={0} sx={{bgcolor: "#FFF", color: "#000"}}>
-        <Toolbar>
+        <Toolbar sx={{ display: "flex", justifyContent: "space-between"}}>
           <IconButton size="large" edge="start" color="inherit" aria-label="open drawer" onClick={handleDrawerToggle} sx={{ mr: 2, display: { xs: 'block', sm: 'none', md: 'none' } }}>
             <MenuIcon />
           </IconButton>
@@ -104,8 +104,6 @@ export default function AppNavBar(props) {
             />
           </Box>
 
-
-          <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: 'none', sm: 'block', md: 'block' } }}>
             {navItems.map((item) => (
               <Button key={item.path} color="inherit" /* component={Link} to={item.path} */>
@@ -113,7 +111,6 @@ export default function AppNavBar(props) {
               </Button>
             ))}
           </Box>
-          <Box sx={{ flexGrow: 1 }} />
 
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
             <IconButton size="large" aria-label="show 4 new mails" color="inherit">
