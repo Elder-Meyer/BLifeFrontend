@@ -104,9 +104,9 @@ export default function AppNavBar(props) {
             />
           </Box>
 
-          <Box sx={{ display: { xs: 'none', sm: 'block', md: 'block' } }}>
+          <Box sx={{ display: { xs: 'none', sm: 'block', md: 'block' }, color: "#343434" }}>
             {navItems.map((item) => (
-              <Button key={item.path} color="inherit" component='a' href={item.path}>
+              <Button key={item.path} color="inherit" component='a' href={item.path} sx={{ textTransform: "capitalize", fontWeight: 700, borderRadius: "22px", px:2, py:0, m:0.2, bgcolor: item.texto === "Promociones" ? "#EDA836" : "none", '&:hover' : {bgcolor: "#EDA836"} }}>
                 {item.texto}
               </Button>
             ))}
