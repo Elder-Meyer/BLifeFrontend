@@ -95,7 +95,7 @@ export default function AppNavBar(props) {
           <IconButton size="large" edge="start" color="inherit" aria-label="open drawer" onClick={handleDrawerToggle} sx={{ mr: 2, display: { xs: 'block', sm: 'none', md: 'none' } }}>
             <MenuIcon />
           </IconButton>
-          <Box sx={{ width: {xs: "100%", sm: "auto"}, display: "flex", justifyContent: "center"}}>
+          <Box component='a' href='/' sx={{ width: {xs: "100%", sm: "auto"}, display: "flex", justifyContent: "center"}}>
             <CardMedia component="img"
               image={logo}
               width={`90px`}
@@ -106,7 +106,7 @@ export default function AppNavBar(props) {
 
           <Box sx={{ display: { xs: 'none', sm: 'block', md: 'block' } }}>
             {navItems.map((item) => (
-              <Button key={item.path} color="inherit" /* component={Link} to={item.path} */>
+              <Button key={item.path} color="inherit" component='a' href={item.path}>
                 {item.texto}
               </Button>
             ))}
