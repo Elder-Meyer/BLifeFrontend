@@ -1,14 +1,12 @@
 import * as React from 'react';
-import { AppBar, Box, Toolbar, IconButton, Typography, Badge ,MenuItem, Menu, Button, Divider, Drawer, List, ListItem, ListItemButton, ListItemText } from '@mui/material';
+import { AppBar, Box, Toolbar, IconButton, Typography, Badge ,MenuItem, Menu, Button, Divider, Drawer, List, ListItem, ListItemButton, ListItemText, CardMedia } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
-import AccountCircle from '@mui/icons-material/AccountCircle';
-import MailIcon from '@mui/icons-material/Mail';
-import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import { AccountCircleOutlined, SearchOutlined, ShoppingBagOutlined } from '@mui/icons-material';
+import logo from '../assets/blifelogo.png'
 
 const drawerWidth = 240;
-const navItems = [{ texto: 'Productos', path: '#' }, { texto: 'Promociones', path: '#' }, { texto: 'Nosotros', path: '#' }];
+const navItems = [{ texto: 'Productos', path: '/productos' }, { texto: 'Promociones', path: '/promociones' }, { texto: 'Nosotros', path: '/nosotros' }];
 
 export default function AppNavBar(props) {
   const { window } = props;
@@ -19,15 +17,15 @@ export default function AppNavBar(props) {
   }
 
   const drawer = (
-    <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
-      <Typography variant="h6" sx={{ my: 2 }}>
-        Fashion fusion
-      </Typography>
+    <Box onClick={handleDrawerToggle}>
+      <Box sx={{ my: 2, display: "flex", justifyContent: "center"}}>
+        <CardMedia component="img" image={logo} width={`90px`} draggable="false" sx={{ aspectRatio: "83/25",  width: "100px", userSelect: "none" }}/>
+      </Box>
       <Divider />
       <List>
         {navItems.map((item) => (
           <ListItem key={item.path} disablePadding>
-            <ListItemButton sx={{ textAlign: 'center' }} /* component={Link} to={item.path} */>
+            <ListItemButton sx={{ textAlign: 'center' }}  component='a' href={item.path} >
               <ListItemText primary={item.texto} />
             </ListItemButton>
           </ListItem>
@@ -67,19 +65,19 @@ export default function AppNavBar(props) {
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
     >
-      <MenuItem>
+      <MenuItem dense>
         <IconButton size="large" aria-label="show 4 new mails" color="inherit">
           <SearchOutlined />
         </IconButton>
         <p>Search</p>
       </MenuItem>
-      <MenuItem>
+      <MenuItem dense>
         <IconButton size="large" aria-label="show 17 new notifications" color="inherit">
           <AccountCircleOutlined />
         </IconButton>
         <p>Profile</p>
       </MenuItem>
-      <MenuItem onClick={handleProfileMenuOpen}>
+      <MenuItem dense onClick={handleProfileMenuOpen}>
         <IconButton size="large" aria-label="account of current user" aria-controls="primary-search-account-menu" aria-haspopup="true" color="inherit">
           <Badge badgeContent={2} color="error">
             <ShoppingBagOutlined />
@@ -94,12 +92,17 @@ export default function AppNavBar(props) {
     <Box>
       <AppBar elevation={0} sx={{bgcolor: "#FFF", color: "#000"}}>
         <Toolbar>
-          <IconButton size="large" edge="start" color="inherit" aria-label="open drawer" onClick={handleDrawerToggle} sx={{ mr: 2, display: { xs: 'block', sm: 'block', md: 'none' } }}>
+          <IconButton size="large" edge="start" color="inherit" aria-label="open drawer" onClick={handleDrawerToggle} sx={{ mr: 2, display: { xs: 'block', sm: 'none', md: 'none' } }}>
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap component="div">
-            Fashion
-          </Typography>
+          <Box sx={{ width: {xs: "100%", sm: "auto"}, display: "flex", justifyContent: "center"}}>
+            <CardMedia component="img"
+              image={logo}
+              width={`90px`}
+              draggable="false"
+              sx={{ aspectRatio: "83/25",  width: {xs: "100px", sm: "120px", md: "140px"}, userSelect: "none" }}
+            />
+          </Box>
 
 
           <Box sx={{ flexGrow: 1 }} />
@@ -135,13 +138,8 @@ export default function AppNavBar(props) {
       
       <Box component="nav">
         <Drawer container={container} variant="temporary" open={mobileOpen} onClose={handleDrawerToggle}
-          ModalProps={{
-            keepMounted: true, // Better open performance on mobile.
-          }}
-          sx={{
-            display: { xs: 'block', sm: 'block', md: 'none' },
-            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
-          }}
+          ModalProps={{ keepMounted: true }}
+          sx={{ display: { xs: 'block', sm: 'none', md: 'none' }, '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth }}}
         >
           {drawer}
         </Drawer>
