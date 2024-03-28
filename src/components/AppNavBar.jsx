@@ -1,8 +1,9 @@
 import * as React from 'react';
-import { AppBar, Box, Toolbar, IconButton, Typography, Badge ,MenuItem, Menu, Button, Divider, Drawer, List, ListItem, ListItemButton, ListItemText, CardMedia } from '@mui/material';
+import { AppBar, Box, Toolbar, IconButton, Badge ,MenuItem, Menu, Button, Divider, Drawer, List, ListItem, ListItemButton, ListItemText, CardMedia } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import { AccountCircleOutlined, SearchOutlined, ShoppingBagOutlined } from '@mui/icons-material';
+import { Link } from 'react-router-dom';
 import logo from '../assets/blifelogo.png'
 
 const drawerWidth = 240;
@@ -25,7 +26,7 @@ export default function AppNavBar(props) {
       <List>
         {navItems.map((item) => (
           <ListItem key={item.path} disablePadding>
-            <ListItemButton sx={{ textAlign: 'center' }}  component='a' href={item.path} >
+            <ListItemButton sx={{ textAlign: 'center' }}  component={Link} to={item.path} >
               <ListItemText primary={item.texto} />
             </ListItemButton>
           </ListItem>
@@ -95,7 +96,7 @@ export default function AppNavBar(props) {
           <IconButton size="large" edge="start" color="inherit" aria-label="open drawer" onClick={handleDrawerToggle} sx={{ mr: 2, display: { xs: 'block', sm: 'none', md: 'none' } }}>
             <MenuIcon />
           </IconButton>
-          <Box component='a' href='/' sx={{ width: {xs: "100%", sm: "auto"}, display: "flex", justifyContent: "center"}}>
+          <Box component={Link} to='/' sx={{ width: {xs: "100%", sm: "auto"}, display: "flex", justifyContent: "center"}}>
             <CardMedia component="img"
               image={logo}
               width={`90px`}
@@ -106,7 +107,7 @@ export default function AppNavBar(props) {
 
           <Box sx={{ display: { xs: 'none', sm: 'block', md: 'block' }, color: "#343434" }}>
             {navItems.map((item) => (
-              <Button key={item.path} color="inherit" component='a' href={item.path} sx={{ textTransform: "capitalize", fontWeight: 700, borderRadius: "22px", px:2, py:0, m:0.2, bgcolor: item.texto === "Promociones" ? "#EDA836" : "none", '&:hover' : {bgcolor: "#EDA836"} }}>
+              <Button key={item.path} color="inherit" component={Link} to={item.path} sx={{ textTransform: "capitalize", fontWeight: 700, borderRadius: "22px", px:2, py:0, m:0.2, bgcolor: item.texto === "Promociones" ? "#EDA836" : "none", '&:hover' : {bgcolor: "#EDA836"} }}>
                 {item.texto}
               </Button>
             ))}
