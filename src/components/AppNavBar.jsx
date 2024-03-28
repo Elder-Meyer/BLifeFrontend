@@ -3,7 +3,7 @@ import { AppBar, Box, Toolbar, IconButton, Badge ,MenuItem, Menu, Button, Divide
 import MenuIcon from '@mui/icons-material/Menu';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import { AccountCircleOutlined, SearchOutlined, ShoppingBagOutlined } from '@mui/icons-material';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import logo from '../assets/blifelogo.png'
 
 const drawerWidth = 240;
@@ -12,6 +12,7 @@ const navItems = [{ texto: 'Productos', path: '/productos' }, { texto: 'Promocio
 export default function AppNavBar(props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
+  const location = useLocation()
 
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
@@ -107,7 +108,7 @@ export default function AppNavBar(props) {
 
           <Box sx={{ display: { xs: 'none', sm: 'block', md: 'block' }, color: "#343434" }}>
             {navItems.map((item) => (
-              <Button key={item.path} color="inherit" component={Link} to={item.path} sx={{ textTransform: "capitalize", fontWeight: 700, borderRadius: "22px", px:2, py:0, m:0.2, bgcolor: item.texto === "Promociones" ? "#EDA836" : "none", '&:hover' : {bgcolor: "#EDA836"} }}>
+              <Button key={item.path} color="inherit" component={Link} to={item.path} sx={{ textTransform: "capitalize", fontWeight: 700, borderRadius: "22px", px:2, py:0, m:0.2, bgcolor: item.path === location.pathname ? "#EDA836" : "none", '&:hover' : {bgcolor: "#EDA836"} }}>
                 {item.texto}
               </Button>
             ))}
