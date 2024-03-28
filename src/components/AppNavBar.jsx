@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { AppBar, Box, Toolbar, IconButton, Badge ,MenuItem, Menu, Button, Divider, Drawer, List, ListItem, ListItemButton, ListItemText, CardMedia } from '@mui/material';
+import { Container, AppBar, Box, Toolbar, IconButton, Badge ,MenuItem, Menu, Button, Divider, Drawer, List, ListItem, ListItemButton, ListItemText, CardMedia } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import { AccountCircleOutlined, SearchOutlined, ShoppingBagOutlined } from '@mui/icons-material';
@@ -93,46 +93,48 @@ export default function AppNavBar(props) {
   return (
     <Box>
       <AppBar elevation={0} sx={{bgcolor: "#FFF", color: "#000"}}>
-        <Toolbar sx={{ display: "flex", justifyContent: "space-between"}}>
-          <IconButton size="large" edge="start" color="inherit" aria-label="open drawer" onClick={handleDrawerToggle} sx={{ mr: 2, display: { xs: 'block', sm: 'none', md: 'none' } }}>
-            <MenuIcon />
-          </IconButton>
-          <Box component={Link} to='/' sx={{ width: {xs: "100%", sm: "auto"}, display: "flex", justifyContent: "center"}}>
-            <CardMedia component="img"
-              image={logo}
-              width={`90px`}
-              draggable="false"
-              sx={{ aspectRatio: "83/25",  width: {xs: "100px", sm: "120px", md: "140px"}, userSelect: "none" }}
-            />
-          </Box>
+        <Container maxWidth="xl">
+          <Toolbar sx={{ display: "flex", justifyContent: "space-between"}}>
+            <IconButton size="large" edge="start" color="inherit" aria-label="open drawer" onClick={handleDrawerToggle} sx={{ mr: 2, display: { xs: 'block', sm: 'none', md: 'none' } }}>
+              <MenuIcon />
+            </IconButton>
+            <Box component={Link} to='/' sx={{ width: {xs: "100%", sm: "auto"}, display: "flex", justifyContent: "center"}}>
+              <CardMedia component="img"
+                image={logo}
+                width={`90px`}
+                draggable="false"
+                sx={{ aspectRatio: "83/25",  width: {xs: "100px", sm: "120px", md: "140px"}, userSelect: "none" }}
+              />
+            </Box>
 
-          <Box sx={{ display: { xs: 'none', sm: 'block', md: 'block' }, color: "#343434" }}>
-            {navItems.map((item) => (
-              <Button key={item.path} color="inherit" component={Link} to={item.path} sx={{ textTransform: "capitalize", fontWeight: 700, borderRadius: "22px", px:2, py:0, m:0.2, bgcolor: item.path === location.pathname ? "#EDA836" : "none", '&:hover' : {bgcolor: "#EDA836"} }}>
-                {item.texto}
-              </Button>
-            ))}
-          </Box>
+            <Box sx={{ display: { xs: 'none', sm: 'block', md: 'block' }, color: "#343434" }}>
+              {navItems.map((item) => (
+                <Button key={item.path} color="inherit" component={Link} to={item.path} sx={{ textTransform: "capitalize", fontWeight: 700, borderRadius: "22px", px:2, py:0, m:0.2, bgcolor: item.path === location.pathname ? "#EDA836" : "none", '&:hover' : {bgcolor: "#EDA836"} }}>
+                  {item.texto}
+                </Button>
+              ))}
+            </Box>
 
-          <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-            <IconButton size="large" aria-label="show 4 new mails" color="inherit">
-              <SearchOutlined/>
-            </IconButton>
-            <IconButton size="large" /* edge="end" */ aria-label="account of current user" aria-controls={menuId} aria-haspopup="true" onClick={handleProfileMenuOpen} color="inherit">
-              <AccountCircleOutlined />
-            </IconButton>
-            <IconButton size="large" aria-label="show 17 new notifications" color="inherit">
-              <Badge badgeContent={2} color="error">
-                <ShoppingBagOutlined />
-              </Badge>
-            </IconButton>
-          </Box>
-          <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
-            <IconButton size="large"aria-label="show more"aria-controls={mobileMenuId}aria-haspopup="true"onClick={handleMobileMenuOpen}color="inherit">
-              <MoreIcon />
-            </IconButton>
-          </Box>
-        </Toolbar>
+            <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
+              <IconButton size="large" aria-label="show 4 new mails" color="inherit">
+                <SearchOutlined/>
+              </IconButton>
+              <IconButton size="large" /* edge="end" */ aria-label="account of current user" aria-controls={menuId} aria-haspopup="true" onClick={handleProfileMenuOpen} color="inherit">
+                <AccountCircleOutlined />
+              </IconButton>
+              <IconButton size="large" aria-label="show 17 new notifications" color="inherit">
+                <Badge badgeContent={2} color="error">
+                  <ShoppingBagOutlined />
+                </Badge>
+              </IconButton>
+            </Box>
+            <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
+              <IconButton size="large"aria-label="show more"aria-controls={mobileMenuId}aria-haspopup="true"onClick={handleMobileMenuOpen}color="inherit">
+                <MoreIcon />
+              </IconButton>
+            </Box>
+          </Toolbar>
+        </Container>
       </AppBar>
       
       <Box component="nav">
