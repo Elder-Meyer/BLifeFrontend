@@ -1,9 +1,12 @@
 import React from "react";
-import { Box, CardMedia, Grid } from "@mui/material";
+import { Box, CardMedia, Container, Grid, Paper, Button, Stack, Typography } from "@mui/material";
 import banner from "../assets/Banner.png";
 import promo from "../assets/promo.png";
+import product from '../assets/Product.png'
+import { Facebook, Instagram, Twitter } from "@mui/icons-material";
 
 export const Home = () => {
+  const numbers = [1, 2, 3, 4];  
   return (
     <Box>
       <Grid container spacing={0}>
@@ -35,6 +38,46 @@ export const Home = () => {
           </Box>
         </Grid>
       </Grid>
+      <br/>
+      <br/>
+
+      <Container maxWidth="xl">
+        <Grid container spacing={3} sx={{outline: "2px solid red"}}>
+          {
+            numbers.map((number) =>
+            <Grid item xs={3} key={number} sx={{outline: "2px solid blue"}}>
+              <Paper variant="outlined" sx={{m:2, borderRadius: 3, bgcolor: "#f9f9f9"}}>
+                <Paper variant="outlined" sx={{ borderRadius: 3 }}>
+                  <Box>
+                    <CardMedia
+                      component="img"
+                      image={product}
+                    />
+                  </Box>
+                  <Stack direction={"row"} justifyContent={"space-around"}>
+                    <Box>
+                      <Typography variant="h6">Citrate Mag</Typography>
+                      <Typography variant="body1">240 Capsulas | 800Mg</Typography>
+                    </Box>
+                    <Box>
+                      <Typography variant="h6">$273.00</Typography>
+                      <Typography variant="body1">$134.00</Typography>
+                    </Box>
+                  </Stack>
+                </Paper>
+                <Stack direction={"row"} justifyContent={"space-around"}>
+                  <Box>
+                    <Typography variant="body1" color="initial">comparte</Typography>
+                    <Facebook/> <Twitter/> <Instagram/>
+                  </Box>
+                  <Button>agregar</Button>
+                </Stack>
+              </Paper>
+            </Grid>
+            )
+          }
+        </Grid>
+      </Container>
     </Box>
   );
 };
