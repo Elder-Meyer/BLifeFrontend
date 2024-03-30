@@ -71,7 +71,7 @@ export const Home = () => {
                   <Button>agregar</Button>
                 </Stack>
               </Paper> */}
-              <Stack spacing={0.5} alignItems={"flex-end"} sx={{position: "absolute", top: { xs: "8%", sm: "12%", md:"16%"}, right: {xs: -9, sm: -13}, zIndex: 3000}}>
+              <Stack spacing={0.5} alignItems={"flex-end"} sx={{position: "absolute", top: { xs: "8%", sm: "12%", md:"16%"}, right: {xs: -9, sm: -13}, zIndex: 1000}}>
                 <Stack direction="row" justifyContent={"space-between"} sx={{width: "62px", height: "31px", borderRadius: "20px", border: "1px solid #e1e1e1", px: "12px", py: 1, bgcolor: "#fff" }}>
                   <FavoriteBorderOutlined sx={{ width: "14px", height: "14px", color: "#ff8e8e"}} />
                   <Typography fontWeight={700} fontSize={12} lineHeight={"14.88px"} letterSpacing={"-2%"} color={"#22212c"}>22</Typography>
