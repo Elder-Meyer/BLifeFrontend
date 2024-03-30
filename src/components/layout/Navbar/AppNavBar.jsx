@@ -10,14 +10,24 @@ const drawerWidth = 240;
 const navItems = [{ texto: 'Productos', path: '/productos' }, { texto: 'Promociones', path: '/promociones' }, { texto: 'Nosotros', path: '/nosotros' }];
 
 export default function AppNavBar(props) {
+  //estados para controlar los menus
   const { window } = props;
-  const [mobileOpen, setMobileOpen] = React.useState(false);
   const location = useLocation()
+  const [mobileOpen, setMobileOpen] = React.useState(false);
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
-  const handleDrawerToggle = () => {
-    setMobileOpen((prevState) => !prevState);
-  }
+  // funciones de cmabio para los menus
+  const container = window !== undefined ? () => window().document.body : undefined;
+  const handleDrawerToggle = () => { setMobileOpen((prevState) => !prevState) }
+  const handleProfileMenuOpen = (event) => { setAnchorEl(event.currentTarget) };
+  const handleMobileMenuClose = () => { setMobileMoreAnchorEl(null)};
+  const handleMobileMenuOpen = (event) => { setMobileMoreAnchorEl(event.currentTarget) };
+  const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
+  const menuId = 'primary-search-account-menu';
+  const mobileMenuId = 'primary-search-account-menu-mobile';
 
+  // componentes de menus
   const drawer = (
     <Box onClick={handleDrawerToggle}>
       <Box sx={{ my: 2, display: "flex", justifyContent: "center"}}>
@@ -36,36 +46,10 @@ export default function AppNavBar(props) {
     </Box>
   );
 
-  const container = window !== undefined ? () => window().document.body : undefined;
-
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
-
-  const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
-
-  const handleProfileMenuOpen = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleMobileMenuClose = () => {
-    setMobileMoreAnchorEl(null);
-  };
-
-  const handleMobileMenuOpen = (event) => {
-    setMobileMoreAnchorEl(event.currentTarget);
-  };
-
-  const menuId = 'primary-search-account-menu';
-  const mobileMenuId = 'primary-search-account-menu-mobile';
-
   const renderMobileMenu = (
-    <Menu anchorEl={mobileMoreAnchorEl}
+    <Menu anchorEl={mobileMoreAnchorEl} id={mobileMenuId} keepMounted open={isMobileMenuOpen} onClose={handleMobileMenuClose}
       anchorOrigin={{ vertical: 'top',horizontal: 'right' }}
-      id={mobileMenuId}
-      keepMounted
       transformOrigin={{ vertical: 'top', horizontal: 'right' }}
-      open={isMobileMenuOpen}
-      onClose={handleMobileMenuClose}
     >
       <MenuItem dense>
         <IconButton size="large" aria-label="show 4 new mails" color="inherit">
@@ -80,7 +64,7 @@ export default function AppNavBar(props) {
         <p>Profile</p>
       </MenuItem>
       <MenuItem dense onClick={handleProfileMenuOpen}>
-        <IconButton size="large" aria-label="account of current user" aria-controls="primary-search-account-menu" aria-haspopup="true" color="inherit">
+        <IconButton size="large" aria-label="account of current user" color="inherit">
           <Badge badgeContent={2} color="error">
             <ShoppingBagOutlined />
           </Badge>
@@ -99,10 +83,9 @@ export default function AppNavBar(props) {
               <MenuIcon />
             </IconButton>
             <Box component={Link} to='/' sx={{ width: {xs: "100%", sm: "auto"}, display: "flex", justifyContent: "center"}}>
-              <CardMedia component="img"
+              <CardMedia component="img" draggable="false"
                 image={logo}
                 width={`90px`}
-                draggable="false"
                 sx={{ aspectRatio: "83/25",  width: {xs: "100px", sm: "120px", md: "140px"}, userSelect: "none" }}
               />
             </Box>
@@ -138,10 +121,7 @@ export default function AppNavBar(props) {
       </AppBar>
       
       <Box component="nav">
-        <Drawer container={container} variant="temporary" open={mobileOpen} onClose={handleDrawerToggle}
-          ModalProps={{ keepMounted: true }}
-          sx={{ display: { xs: 'block', sm: 'none', md: 'none' }, '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth }}}
-        >
+        <Drawer container={container} variant="temporary" open={mobileOpen} onClose={handleDrawerToggle} ModalProps={{ keepMounted: true }} sx={{ display: { xs: 'block', sm: 'none', md: 'none' }, '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth }}}>
           {drawer}
         </Drawer>
       </Box>
