@@ -25,6 +25,6 @@ export const customTheme = createTheme({
     }, */
   },
   typography: {
-    fontFamily: "'Inter', sans-serif",
+    fontFamily: "'Kumbh Sans', sans-serif",
   },
 });
