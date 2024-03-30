@@ -10,9 +10,9 @@ export const Router = () => {
       <Routes>
         <Route path="/" element={<Navigate to={"/inicio"}/>} />
         <Route path="/inicio" element={<Home/>} />
-        <Route path="/Productos" element={"pro"} />
-        <Route path="/Promociones" element={"prom"} />
-        <Route path="/Nosotros" element={"nos"} />
+        <Route path="/Productos" element={"sección de productos"} />
+        <Route path="/Promociones" element={"sección de promociones"} />
+        <Route path="/Nosotros" element={"sección sobre nosotros"} />
         <Route path="*" element={"nothing"} />
       </Routes>
     </BrowserRouter>
