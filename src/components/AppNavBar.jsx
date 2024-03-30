@@ -109,7 +109,7 @@ export default function AppNavBar(props) {
 
             <Box sx={{ display: { xs: 'none', sm: 'block', md: 'block' }, color: "#343434" }}>
               {navItems.map((item) => (
-                <Button key={item.path} color="inherit" component={Link} to={item.path} sx={{ textTransform: "capitalize", fontWeight: 700, borderRadius: "22px", px:2, py:0, m:0.2, bgcolor: item.path === location.pathname ? "#EDA836" : "none", '&:hover' : {bgcolor: "#EDA836"} }}>
+                <Button key={item.path} color="inherit" component={Link} to={item.path} sx={{ fontWeight: 700, fontSize: 16,lineHeight: "19.84px",letterSpacing: "-2%",color: "#343434",textTransform: "capitalize", borderRadius: "22px", px:2, py:0.3, m:0.2, bgcolor: item.path === location.pathname ? "#EDA836" : "none", '&:hover' : {bgcolor: "#EDA836"} }}>
                   {item.texto}
                 </Button>
               ))}
