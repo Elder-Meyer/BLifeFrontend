@@ -44,33 +44,6 @@ export const Home = () => {
           {
             numbers.map((number) =>
             <Grid item xs={12} sm={6} md={4} lg={3} xl={3} key={number} sx={{position: "relative"}}>
-              {/* <Paper variant="outlined" sx={{m:2, borderRadius: 3, bgcolor: "#f9f9f9"}}>
-                <Paper variant="outlined" sx={{ borderRadius: 3 }}>
-                  <Box>
-                    <CardMedia
-                      component="img"
-                      image={product}
-                    />
-                  </Box>
-                  <Stack direction={"row"} justifyContent={"space-around"}>
-                    <Box>
-                      <Typography variant="h6">Citrate Mag</Typography>
-                      <Typography variant="body1">240 Capsulas | 800Mg</Typography>
-                    </Box>
-                    <Box>
-                      <Typography variant="h6">$273.00</Typography>
-                      <Typography variant="body1">$134.00</Typography>
-                    </Box>
-                  </Stack>
-                </Paper>
-                <Stack direction={"row"} justifyContent={"space-around"}>
-                  <Box>
-                    <Typography variant="body1" color="initial">comparte</Typography>
-                    <Facebook/> <Twitter/> <Instagram/>
-                  </Box>
-                  <Button>agregar</Button>
-                </Stack>
-              </Paper> */}
               <Stack spacing={0.5} alignItems={"flex-end"} sx={{position: "absolute", top: { xs: "8%", sm: "12%", md:"16%"}, right: {xs: -9, sm: -13}, zIndex: 1000}}>
                 <Stack direction="row" justifyContent={"space-between"} sx={{width: "62px", height: "31px", borderRadius: "20px", border: "1px solid #e1e1e1", px: "12px", py: 1, bgcolor: "#fff" }}>
                   <FavoriteBorderOutlined sx={{ width: "14px", height: "14px", color: "#ff8e8e"}} />
