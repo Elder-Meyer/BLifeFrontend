@@ -4,7 +4,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import { AccountCircleOutlined, SearchOutlined, ShoppingBagOutlined } from '@mui/icons-material';
 import { Link, useLocation } from 'react-router-dom';
-import logo from '../assets/blifelogo.png'
+import logo from '../../../assets/blifelogo.png'
 
 const drawerWidth = 240;
 const navItems = [{ texto: 'Productos', path: '/productos' }, { texto: 'Promociones', path: '/promociones' }, { texto: 'Nosotros', path: '/nosotros' }];

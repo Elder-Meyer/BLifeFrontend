@@ -1,7 +1,7 @@
 import React from 'react'
 import { Home } from '../views/Home'
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
-import AppNavBar from '../components/AppNavBar'
+import AppNavBar from '../components/layout/Navbar/AppNavBar'
 
 export const Router = () => {
   return (
