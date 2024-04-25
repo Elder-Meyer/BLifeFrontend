@@ -1,4 +1,4 @@
-import { Navigate } from 'react-router-dom'
+// import { Navigate } from 'react-router-dom'
 import { Productos } from '../views/Productos/Productos'
 import { Promociones } from '../views/Promociones/Promociones'
 import { Nosotros } from '../views/Nosotros/Nosotros'
@@ -7,7 +7,7 @@ import { Inicio } from '../views/Inicio/Inicio'
 export const routeo = [
     {
         path: "/",
-        element: <Navigate to={"/inicio"}/>
+        element: <Inicio/>
     },
     {
         path: "/inicio",
